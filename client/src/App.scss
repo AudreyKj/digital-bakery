@@ -39,6 +39,17 @@ div.App {
   min-height: 100vh;
 }
 
+@media (orientation: landscape) and (max-width: 700px) {
+  .container,
+  .container-fluid,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    margin-top: -100px;
+  }
+}
+
 div.sun {
   width: 100px;
   height: 100px;
@@ -47,6 +58,26 @@ div.sun {
   position: relative;
 
   right: -120px;
+}
+
+@media (orientation: landscape) and (max-width: 700px) {
+  div.sun {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 600px), (max-height: 600px) {
+  div.sun {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 700px) {
+  div.sun {
+    top: 80px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -61,11 +92,26 @@ div.roof {
   @include triangle(250px);
 }
 
+@media (max-width: 600px), (max-height: 600px) {
+  div.roof {
+    width: 0;
+    height: 0;
+    @include triangle(150px);
+  }
+}
+
 div.body {
   width: 500px;
   height: 350px;
 
   background-color: $lightgrey;
+}
+
+@media (max-width: 600px), (max-height: 600px) {
+  div.body {
+    width: 300px;
+    height: 150px;
+  }
 }
 
 div.windows {
@@ -81,16 +127,31 @@ div.windows {
   margin-top: 25px;
 }
 
+@media (max-width: 600px), (max-height: 600px) {
+  .window {
+    width: 80px;
+    height: 80px;
+  }
+}
+
 .window1 {
   margin-left: 20px;
+}
+
+@media (orientation: landscape) and (max-width: 800px) {
+  .window1 {
+    margin-left: 10px;
+  }
 }
 
 .window2 {
   margin-right: 20px;
 }
 
-.cookie2 {
-  margin-right: 20px;
+@media (orientation: landscape) and (max-width: 800px) {
+  .window2 {
+    margin-right: 10px;
+  }
 }
 
 div.door {
@@ -100,6 +161,14 @@ div.door {
   position: absolute;
   margin-top: 100px;
   cursor: pointer;
+}
+
+@media (max-width: 600px), (max-height: 500px) {
+  div.door {
+    width: 85px;
+    height: 100px;
+    margin-top: 50px;
+  }
 }
 
 div.door-handle {
@@ -116,6 +185,17 @@ div.mailbox {
   position: relative;
   top: 30px;
   left: 170px;
+}
+
+@media (max-width: 600px), (max-height: 600px) {
+  div.mailbox {
+    width: 95px;
+    height: 45px;
+    position: relative;
+    top: 0px;
+    left: 95px;
+    margin-top: 5px;
+  }
 }
 
 span.mailbox-title {
@@ -138,8 +218,22 @@ div.sign {
   margin-top: -50px;
 }
 
+@media (max-width: 600px), (max-height: 500px) {
+  div.sign {
+    width: 150px;
+    height: 50px;
+    margin-top: -40px;
+  }
+}
+
 span.sign-writing {
   font-size: 1.5rem;
 
   @include writing($darkgreen);
+}
+
+@media (max-width: 600px), (max-height: 500px) {
+  span.sign-writing {
+    font-size: 1rem;
+  }
 }
