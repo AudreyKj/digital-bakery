@@ -19,7 +19,21 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 }
 
-//ROUTES
+//ROUTE: make order
+app.post("/order", async (req, res) => {
+  try {
+    const timestamp = Math.floor(Date.now() / 1000);
+    console.log("timestamp", timestamp);
+    const newOrder = await pool.query(
+      "INSERT INTO orders(created_at) VALUES($1) RETURNING *",
+      [timestamp]
+    );
+    console.log(newOrder.rows);
+    return res.json(newOrder.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
