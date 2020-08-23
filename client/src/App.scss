@@ -1,6 +1,145 @@
+$yellow: #ffff00;
+$red: #ec6c6c;
+$lightgrey: #c7c7c7;
+$darkgrey: #808080;
+$grey-black: #3a3b3a;
+$lightblue: #add8e6;
+$blue: #4e7ce4;
+$orange: #f3b23c;
+$brown: #a96501;
+$green: #92c57a;
+$darkgreen: #2e3e26;
+
+@mixin triangle($num) {
+  width: 0;
+  height: 0;
+  border-left: $num solid transparent;
+  border-right: $num solid transparent;
+  border-bottom: $num solid $red;
+}
+
+@mixin writing($color) {
+  color: $color;
+  font-weight: bold;
+}
+
 body,
 div#root {
   background: linear-gradient(0deg, #cfd9df 0, #4f8aab);
   background-repeat: no-repeat;
   min-height: 100vh;
+}
+
+.night {
+  background: linear-gradient(0deg, #1e323e 30%, #004771);
+}
+
+div.App {
+  width: 100%;
+  min-height: 100vh;
+}
+
+div.sun {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: $yellow;
+  position: relative;
+
+  right: -120px;
+}
+
+@media (max-width: 400px) {
+  div.sun {
+    right: -90px;
+  }
+}
+
+div.roof {
+  width: 0;
+  height: 0;
+  @include triangle(250px);
+}
+
+div.body {
+  width: 500px;
+  height: 350px;
+
+  background-color: $lightgrey;
+}
+
+div.windows {
+  width: 100%;
+}
+
+.window {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: $lightblue;
+  border: 5px solid $blue;
+  margin-top: 25px;
+}
+
+.window1 {
+  margin-left: 20px;
+}
+
+.window2 {
+  margin-right: 20px;
+}
+
+.cookie2 {
+  margin-right: 20px;
+}
+
+div.door {
+  background-color: $orange;
+  width: 140px;
+  height: 250px;
+  position: absolute;
+  margin-top: 100px;
+  cursor: pointer;
+}
+
+div.door-handle {
+  background-color: $brown;
+  width: 50px;
+  height: 10px;
+}
+
+div.mailbox {
+  width: 100px;
+  height: 100px;
+
+  background-color: $darkgrey;
+  position: relative;
+  top: 30px;
+  left: 170px;
+}
+
+span.mailbox-title {
+  @include writing($grey-black);
+}
+
+div.mailbox-opening {
+  background-color: $grey-black;
+  width: 80%;
+  height: 10px;
+  left: 160px;
+  margin-top: 10px;
+}
+
+div.sign {
+  background-color: $green;
+  width: 250px;
+  height: 80px;
+  z-index: 1;
+  margin-top: -50px;
+}
+
+span.sign-writing {
+  font-size: 1.5rem;
+
+  @include writing($darkgreen);
 }
