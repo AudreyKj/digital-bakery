@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 import Bakery from "./Bakery.js";
 import "./App.scss";
 
 function App() {
+  const [night, setNight] = useState(false);
+  const [sun, setSun] = useState(true);
+
+  console.log(night);
+
+  const nightModeOn = () => {
+    night ? setSun(true) : setSun(false);
+
+    night ? setNight(false) : setNight(true);
+  };
   return (
-    <div className="App d-flex align-items-center justify-content-center">
-      <Bakery> </Bakery>
+    <div
+      className={
+        night
+          ? "nightApp d-flex align-items-center justify-content-center"
+          : "App d-flex align-items-center justify-content-center"
+      }
+    >
+      <Bakery nightMode={nightModeOn} sunToggle={sun}></Bakery>
     </div>
   );
 }

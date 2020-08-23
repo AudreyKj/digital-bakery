@@ -23,15 +23,16 @@ $darkgreen: #2e3e26;
   font-weight: bold;
 }
 
-body,
-div#root {
+div.App {
   background: linear-gradient(0deg, #cfd9df 0, #4f8aab);
   background-repeat: no-repeat;
   min-height: 100vh;
 }
 
-.night {
+.nightApp {
   background: linear-gradient(0deg, #1e323e 30%, #004771);
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 div.App {
@@ -50,38 +51,47 @@ div.App {
   }
 }
 
-div.sun {
+.planet {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: $yellow;
+
   position: relative;
 
   right: -120px;
+  cursor: pointer;
+}
+
+.sun {
+  background-color: $yellow;
+}
+
+.moon {
+  background-color: $lightgrey;
 }
 
 @media (orientation: landscape) and (max-width: 700px) {
-  div.sun {
+  .planet {
     width: 50px;
     height: 50px;
   }
 }
 
 @media (max-width: 600px), (max-height: 600px) {
-  div.sun {
+  .planet {
     width: 80px;
     height: 80px;
   }
 }
 
 @media (orientation: landscape) and (max-width: 700px) {
-  div.sun {
+  .planet {
     top: 80px;
   }
 }
 
 @media (max-width: 400px) {
-  div.sun {
+  .planet {
     right: -90px;
   }
 }
@@ -154,6 +164,18 @@ div.windows {
   }
 }
 
+.cookie {
+  background-image: url("cookie.png");
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.cookie2 {
+  margin-right: 20px;
+}
+
 div.door {
   background-color: $orange;
   width: 140px;
@@ -185,6 +207,7 @@ div.mailbox {
   position: relative;
   top: 30px;
   left: 170px;
+  cursor: pointer;
 }
 
 @media (max-width: 600px), (max-height: 600px) {
@@ -196,6 +219,16 @@ div.mailbox {
     left: 95px;
     margin-top: 5px;
   }
+}
+
+div.mailboxFall {
+  width: 100px;
+  height: 100px;
+
+  background-color: $darkgrey;
+  position: relative;
+  top: 80px;
+  left: 190px;
 }
 
 span.mailbox-title {
@@ -236,4 +269,14 @@ span.sign-writing {
   span.sign-writing {
     font-size: 1rem;
   }
+}
+
+.alert {
+  top: 20px;
+  width: 30%;
+  position: absolute;
+}
+
+span.close {
+  cursor: pointer;
 }
