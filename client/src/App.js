@@ -8,7 +8,7 @@ function App() {
   const [night, setNight] = useState(false);
   const [sun, setSun] = useState(true);
 
-  console.log(night);
+  console.log("night", night);
 
   const nightModeOn = () => {
     night ? setSun(true) : setSun(false);
@@ -19,8 +19,8 @@ function App() {
     <div
       className={
         night
-          ? "nightApp d-flex align-items-center justify-content-center"
-          : "App d-flex align-items-center justify-content-center"
+          ? "App night d-flex align-items-center justify-content-center"
+          : "App day d-flex align-items-center justify-content-center"
       }
     >
       <Bakery nightMode={nightModeOn} sunToggle={sun}></Bakery>

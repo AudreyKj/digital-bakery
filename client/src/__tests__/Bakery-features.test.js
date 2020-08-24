@@ -23,7 +23,7 @@ it("if nighMode is off, the windows transform to a cookie on hover", () => {
 
   //mouseEnter: window to cookie
   fireEvent.mouseEnter(getByTestId("window1"));
-  expect(getByTestId("window1")).toHaveClass("cookie");
+  expect(getByTestId("window1")).toHaveClass("cookie cookie1");
   fireEvent.mouseEnter(getByTestId("window2"));
   expect(getByTestId("window2")).toHaveClass("cookie cookie2");
 
@@ -44,11 +44,9 @@ it("if nighMode is off, triggers POST request when user clicks on the door", asy
   );
 
   fireEvent.click(getByTestId("door"));
-
   await waitForElement(() => screen.getByRole("alert"));
 
   expect(screen.getByRole("alert")).toHaveTextContent("SUCCESS");
-
   expect(axios.post).toHaveBeenCalledTimes(1);
 });
 
@@ -75,12 +73,14 @@ it("nightMode toggle when user clicks on the sun", () => {
 it("mailbox falls to the ground on click", () => {
   const { container, getByTestId } = render(<Bakery />);
 
+  //before click -> on the wall
   expect(getByTestId("mailbox")).toHaveClass(
     "mailbox d-flex flex-column align-items-center"
   );
 
   fireEvent.click(getByTestId("mailbox"));
 
+  //after click -> on the ground
   expect(getByTestId("mailbox")).toHaveClass(
     "mailboxFall d-flex flex-column align-items-center"
   );

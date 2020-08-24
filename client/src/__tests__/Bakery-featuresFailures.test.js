@@ -32,27 +32,30 @@ it("if nightMode is on, the windows do not transform to cookies on hover", () =>
   const { container, getByTestId } = render(<Bakery sunToggle={false} />);
 
   expect(getByTestId("window1")).toHaveClass("window window1");
+  expect(getByTestId("window2")).toHaveClass("window window2");
 
   fireEvent.mouseEnter(getByTestId("window1"));
+  fireEvent.mouseEnter(getByTestId("window2"));
 
   expect(getByTestId("window1")).toHaveClass("window window1");
+  expect(getByTestId("window2")).toHaveClass("window window2");
 });
 
-it("displays failure message if POST request fails", async () => {
+it("displays error message if POST request fails", async () => {
   const errorMessage = "Network Error";
 
   axios.post.mockImplementationOnce(() =>
     Promise.reject(new Error(errorMessage))
   );
 
-  const { container, getByTestId, getByRole } = render(
+  const { container, getByTestId, getByRole, queryByText } = render(
     <Bakery sunToggle={true} />
   );
 
   fireEvent.click(getByTestId("door"));
-
   await waitForElement(() => screen.getByRole("alert"));
 
   expect(screen.getByRole("alert")).toHaveTextContent("ERROR");
+  expect(queryByText("SUCCESS")).not.toBeInTheDocument();
   expect(axios.post).toHaveBeenCalledTimes(1);
 });

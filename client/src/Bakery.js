@@ -75,7 +75,7 @@ function Bakery(props) {
       {orderConfirmation && (
         <Alert color="success">
           SUCCESS: Your order has been placed! <br />
-          Your order id is: {orderId}
+          Your order id is:&nbsp;<span className="red">{orderId}</span>
           <div className="d-flex justify-content-end">
             <span className="close" onClick={() => setOrderConfirmation(false)}>
               X
@@ -86,8 +86,7 @@ function Bakery(props) {
 
       {orderError && (
         <Alert color="danger">
-          ERROR: Your order has NOT been placed! <br />
-          please try again later
+          ERROR: Your order has NOT been placed! please try again later
           <div className="d-flex justify-content-end">
             <span className="close" onClick={() => setOrderError(false)}>
               X
@@ -110,7 +109,7 @@ function Bakery(props) {
           </div>
           <div className="windows d-flex justify-content-between">
             <div
-              className={w1hovered ? "cookie" : "window window1"}
+              className={w1hovered ? "cookie cookie1" : "window window1"}
               onMouseEnter={w1transformToCookie}
               onMouseLeave={w1transformBacktoWindow}
               data-testid="window1"
@@ -133,8 +132,8 @@ function Bakery(props) {
           <div
             className={
               mailboxFall
-                ? "mailboxFall d-flex flex-column align-items-center"
-                : "mailbox d-flex flex-column align-items-center"
+                ? "mailbox mailboxFall d-flex flex-column align-items-center"
+                : "mailbox mailboxWall d-flex flex-column align-items-center"
             }
             onClick={() => setMailboxFall(true)}
             data-testid="mailbox"
