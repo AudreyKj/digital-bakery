@@ -6,7 +6,8 @@ import {
   waitForElement,
   waitFor,
   fireEvent,
-  act
+  act,
+  screen
 } from "@testing-library/react";
 
 import Bakery from "../Bakery.js";
@@ -34,16 +35,19 @@ it("if nighMode is off, the windows transform to a cookie on hover", () => {
 });
 
 it("if nighMode is off, triggers POST request when user clicks on the door", async () => {
-  axios.post.mockResolvedValueOnce([{ id: 2, created_at: 1234678890 }]);
+  axios.post.mockResolvedValueOnce({
+    data: [{ id: 2, created_at: 1234678890 }]
+  });
 
-  const { container, getByTestId, getByText } = render(
+  const { container, getByTestId, getByRole } = render(
     <Bakery sunToggle={true} />
   );
 
   fireEvent.click(getByTestId("door"));
 
-  const launchesData = await waitForElement(() => getByTestId("success"));
-  expect(getByTestId("success")).toHaveTextContent("SUCCESS");
+  await waitForElement(() => screen.getByRole("alert"));
+
+  expect(screen.getByRole("alert")).toHaveTextContent("SUCCESS");
 
   expect(axios.post).toHaveBeenCalledTimes(1);
 });

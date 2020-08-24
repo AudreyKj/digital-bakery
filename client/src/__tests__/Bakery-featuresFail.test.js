@@ -3,16 +3,16 @@ import "@testing-library/jest-dom/extend-expect";
 import {
   render,
   cleanup,
+  screen,
   waitForElement,
   waitFor,
   fireEvent,
   act
 } from "@testing-library/react";
-
 import Bakery from "../Bakery.js";
 import axios from "axios";
 
-//+ failure message on post request fail
+afterEach(cleanup);
 
 it("if nighMode is on, do not triggers POST request when user clicks on the door", async () => {
   axios.post.mockResolvedValueOnce([{}]);
@@ -36,4 +36,23 @@ it("if nightMode is on, the windows do not transform to cookies on hover", () =>
   fireEvent.mouseEnter(getByTestId("window1"));
 
   expect(getByTestId("window1")).toHaveClass("window window1");
+});
+
+it("displays failure message if POST request fails", async () => {
+  const errorMessage = "Network Error";
+
+  axios.post.mockImplementationOnce(() =>
+    Promise.reject(new Error(errorMessage))
+  );
+
+  const { container, getByTestId, getByRole } = render(
+    <Bakery sunToggle={true} />
+  );
+
+  fireEvent.click(getByTestId("door"));
+
+  await waitForElement(() => screen.getByRole("alert"));
+
+  expect(screen.getByRole("alert")).toHaveTextContent("ERROR");
+  expect(axios.post).toHaveBeenCalledTimes(1);
 });

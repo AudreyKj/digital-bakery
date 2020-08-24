@@ -57,7 +57,7 @@ function Bakery(props) {
       .then(res => {
         console.log(res.data);
         // console.log(res.data[0].order_id);
-        // setOrderId(res.data[0].order_id);
+        setOrderId(res.data[0].order_id);
         setOrderConfirmation(true);
       })
       .catch(error => {
@@ -73,7 +73,7 @@ function Bakery(props) {
   return (
     <Container fluid>
       {orderConfirmation && (
-        <Alert color="success" data-testid="success">
+        <Alert color="success">
           SUCCESS: Your order has been placed! <br />
           Your order id is: {orderId}
           <div className="d-flex justify-content-end">
@@ -86,7 +86,7 @@ function Bakery(props) {
 
       {orderError && (
         <Alert color="danger">
-          FAILURE: Your order has NOT been placed! <br />
+          ERROR: Your order has NOT been placed! <br />
           please try again later
           <div className="d-flex justify-content-end">
             <span className="close" onClick={() => setOrderError(false)}>
