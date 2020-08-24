@@ -14,7 +14,26 @@ import axios from "axios";
 
 afterEach(cleanup);
 
-it("POST request when user clicks on the door and nighMode is off", async () => {
+it("if nighMode is off, the windows transform to a cookie on hover", () => {
+  const { container, getByTestId } = render(<Bakery sunToggle={true} />);
+
+  expect(getByTestId("window1")).toHaveClass("window window1");
+  expect(getByTestId("window2")).toHaveClass("window window2");
+
+  //mouseEnter: window to cookie
+  fireEvent.mouseEnter(getByTestId("window1"));
+  expect(getByTestId("window1")).toHaveClass("cookie");
+  fireEvent.mouseEnter(getByTestId("window2"));
+  expect(getByTestId("window2")).toHaveClass("cookie cookie2");
+
+  //mouseLeave: cookie to window
+  fireEvent.mouseLeave(getByTestId("window1"));
+  expect(getByTestId("window1")).toHaveClass("window window1");
+  fireEvent.mouseLeave(getByTestId("window2"));
+  expect(getByTestId("window2")).toHaveClass("window window2");
+});
+
+it("if nighMode is off, triggers POST request when user clicks on the door", async () => {
   axios.post.mockResolvedValueOnce([{ id: 2, created_at: 1234678890 }]);
 
   const { container, getByTestId, getByText } = render(
@@ -47,4 +66,18 @@ it("nightMode toggle when user clicks on the sun", () => {
   rerender(<Bakery nightMode={nightModeOn} sunToggle={true} />);
   expect(nightModeOn).toHaveBeenCalledTimes(2);
   expect(getByTestId("sun")).toHaveClass("planet sun");
+});
+
+it("mailbox falls to the ground on click", () => {
+  const { container, getByTestId } = render(<Bakery />);
+
+  expect(getByTestId("mailbox")).toHaveClass(
+    "mailbox d-flex flex-column align-items-center"
+  );
+
+  fireEvent.click(getByTestId("mailbox"));
+
+  expect(getByTestId("mailbox")).toHaveClass(
+    "mailboxFall d-flex flex-column align-items-center"
+  );
 });

@@ -137,6 +137,7 @@ function Bakery(props) {
                 : "mailbox d-flex flex-column align-items-center"
             }
             onClick={() => setMailboxFall(true)}
+            data-testid="mailbox"
           >
             <div className="mailbox-opening"> </div>
             <span className="mailbox-title"> Mailbox </span>
