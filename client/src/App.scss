@@ -66,8 +66,12 @@ html,
 
 /* === BAKERY COMPONENT === */
 
-/* container  */
-@media (orientation: landscape) and (max-width: 700px) {
+/* row and container  */
+.row {
+  padding-bottom: 50px;
+}
+
+@media (orientation: landscape) and (max-height: 300px) {
   .container,
   .container-fluid {
     margin-top: -30px;
@@ -97,23 +101,19 @@ html,
 
 @media (max-width: 800px), (max-height: 600px) {
   .planet {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
   }
 }
 
 @media (orientation: landscape) and (max-width: 700px) {
   .planet {
-    width: 50px;
-    height: 50px;
     top: 90px;
   }
 }
 
 @media (max-width: 400px) {
   .planet {
-    width: 50px;
-    height: 50px;
     right: -100px;
   }
 }
@@ -123,7 +123,7 @@ div.roof {
   @include triangle(250px);
 }
 
-@media (max-width: 800px), (max-height: 600px) {
+@media (max-width: 800px), (max-height: 700px) {
   div.roof {
     @include triangle(150px);
   }
@@ -142,7 +142,7 @@ div.body {
   background-color: $lightgrey;
 }
 
-@media (max-width: 800px), (max-height: 600px) {
+@media (max-width: 800px), (max-height: 700px) {
   div.body {
     width: 300px;
     height: 250px;
@@ -170,7 +170,7 @@ div.windows {
   margin-top: 25px;
 }
 
-@media (max-width: 800px), (max-height: 600px) {
+@media (max-width: 800px), (max-height: 700px) {
   .window {
     width: 80px;
     height: 80px;
@@ -249,7 +249,7 @@ div.door {
   cursor: pointer;
 }
 
-@media (max-width: 800px), (max-height: 600px) {
+@media (max-width: 800px), (max-height: 700px) {
   div.door {
     width: 85px;
     height: 150px;
@@ -291,10 +291,10 @@ div.door-handle {
   left: 170px;
 }
 
-@media (max-width: 800px), (max-height: 600px) {
+@media (max-width: 800px), (max-height: 700px) {
   .mailbox {
     width: 95px;
-    height: 45px;
+    height: 60px;
   }
 
   .mailboxWall {
@@ -322,7 +322,7 @@ div.door-handle {
   left: 190px;
 }
 
-@media (max-width: 800px), (max-height: 600px) {
+@media (max-width: 800px), (max-height: 700px) {
   .mailboxFall {
     top: 60px;
     left: 100px;
@@ -358,7 +358,7 @@ div.sign {
   margin-top: -50px;
 }
 
-@media (max-width: 800px), (max-height: 600px) {
+@media (max-width: 800px), (max-height: 700px) {
   div.sign {
     width: 200px;
     height: 60px;
@@ -379,7 +379,7 @@ span.sign-writing {
   @include writing($darkgreen);
 }
 
-@media (max-width: 800px), (max-height: 600px) {
+@media (max-width: 800px), (max-height: 700px) {
   span.sign-writing {
     font-size: 1rem;
   }
