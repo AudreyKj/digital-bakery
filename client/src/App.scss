@@ -50,7 +50,7 @@ html,
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* === APP === */
+/* === APP COMPONENT === */
 .App {
   width: 100%;
   min-height: 100vh;
@@ -64,7 +64,7 @@ html,
   @include sky($nightSky1, $nightSky2);
 }
 
-/* === BAKERY === */
+/* === BAKERY COMPONENT === */
 
 /* container  */
 @media (orientation: landscape) and (max-width: 700px) {
@@ -276,7 +276,7 @@ div.door-handle {
   }
 }
 
-/* mailbox */
+/* mailbox (fixed to the wall & falling)*/
 .mailbox {
   width: 100px;
   height: 90px;
