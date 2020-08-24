@@ -15,28 +15,49 @@ function Bakery(props) {
   console.log("props", props);
 
   const w1transformToCookie = () => {
+    if (!props.sunToggle) {
+      return;
+    }
+
     setW1Hovered(true);
   };
 
   const w1transformBacktoWindow = () => {
+    if (!props.sunToggle) {
+      return;
+    }
+
     setW1Hovered(false);
   };
 
   const w2transformToCookie = () => {
+    if (!props.sunToggle) {
+      return;
+    }
+
     setW2Hovered(true);
   };
 
   const w2transformBacktoWindow = () => {
+    if (!props.sunToggle) {
+      return;
+    }
+
     setW2Hovered(false);
   };
 
   const makeOrder = () => {
+    console.log(props.sunToggle);
+    if (props.sunToggle === false) {
+      return;
+    }
+
     axios
       .post("/order")
       .then(res => {
         console.log(res.data);
-        console.log(res.data[0].order_id);
-        setOrderId(res.data[0].order_id);
+        // console.log(res.data[0].order_id);
+        // setOrderId(res.data[0].order_id);
         setOrderConfirmation(true);
       })
       .catch(error => {
@@ -52,14 +73,11 @@ function Bakery(props) {
   return (
     <Container fluid>
       {orderConfirmation && (
-        <Alert color="success">
+        <Alert color="success" data-testid="success">
           SUCCESS: Your order has been placed! <br />
           Your order id is: {orderId}
           <div className="d-flex justify-content-end">
-            <span
-              className="success-close"
-              onClick={() => setOrderConfirmation(false)}
-            >
+            <span className="close" onClick={() => setOrderConfirmation(false)}>
               X
             </span>
           </div>
@@ -82,6 +100,7 @@ function Bakery(props) {
         <div
           className={props.sunToggle ? "planet sun" : "planet moon"}
           onClick={nightModeToggle}
+          data-testid="sun"
         ></div>
         <div className="roof"></div>
 
@@ -94,14 +113,20 @@ function Bakery(props) {
               className={w1hovered ? "cookie" : "window window1"}
               onMouseEnter={w1transformToCookie}
               onMouseLeave={w1transformBacktoWindow}
+              data-testid="window1"
             ></div>
             <div
               className={w2hovered ? "cookie cookie2" : "window window2"}
               onMouseEnter={w2transformToCookie}
               onMouseLeave={w2transformBacktoWindow}
+              data-testid="window2"
             ></div>
           </div>
-          <div className="door d-flex align-items-center" onClick={makeOrder}>
+          <div
+            className="door d-flex align-items-center"
+            onClick={makeOrder}
+            data-testid="door"
+          >
             <div className="door-handle"></div>
           </div>
 
