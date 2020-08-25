@@ -15,6 +15,11 @@ $daySky2: #4f8aab;
 $nightSky1: #1e323e;
 $nightSky2: #004771;
 
+@mixin sky($color1, $color2) {
+  background: linear-gradient(0deg, $color1 0, $color2);
+  background-repeat: no-repeat;
+}
+
 @mixin triangle($num) {
   width: 0;
   height: 0;
@@ -23,22 +28,17 @@ $nightSky2: #004771;
   border-bottom: $num solid $lightred;
 }
 
-@mixin writing($color) {
-  color: $color;
-  font-weight: bold;
-}
-
-@mixin sky($color1, $color2) {
-  background: linear-gradient(0deg, $color1 0, $color2);
-  background-repeat: no-repeat;
-}
-
 @mixin cookie($image, $size, $margin) {
   background-image: url($image);
   background-repeat: no-repeat;
   width: $size;
   height: $size;
   margin-top: $margin;
+}
+
+@mixin sign-writing($color) {
+  color: $color;
+  font-weight: bold;
 }
 
 html,
@@ -64,7 +64,7 @@ html,
   @include sky($nightSky1, $nightSky2);
 }
 
-/* === BAKERY COMPONENT === */
+/* === BAKERY COMPONENT  === */
 
 /* row and container  */
 .row {
@@ -78,7 +78,7 @@ html,
   }
 }
 
-/* sun with toggle to moon */
+/* sun: toggle to moon on click */
 .planet {
   width: 100px;
   height: 100px;
@@ -136,27 +136,27 @@ div.roof {
 }
 
 /* house body */
-div.body {
+div.house-body {
   width: 500px;
   height: 350px;
   background-color: $lightgrey;
 }
 
 @media (max-width: 800px), (max-height: 700px) {
-  div.body {
+  div.house-body {
     width: 300px;
     height: 250px;
   }
 }
 
 @media (max-width: 400px), (max-height: 450px) {
-  div.body {
+  div.house-body {
     width: 220px;
     height: 150px;
   }
 }
 
-/* windows */
+/* windows: transform to cookie img on click */
 div.windows {
   width: 100%;
 }
@@ -165,9 +165,10 @@ div.windows {
   width: 120px;
   height: 120px;
   border-radius: 50%;
+  margin-top: 25px;
+
   background-color: $lightblue;
   border: 5px solid $blue;
-  margin-top: 25px;
 }
 
 @media (max-width: 800px), (max-height: 700px) {
@@ -215,37 +216,22 @@ div.windows {
   }
 }
 
-@media (max-width: 600px) {
-  .cookie {
-    margin-top: 0;
-  }
-}
-
 .cookie1 {
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 .cookie2 {
-  margin-right: 15px;
+  margin-right: 20px;
 }
 
-@media (max-width: 600px) {
-  .cookie1 {
-    margin-left: 0;
-  }
-
-  .cookie2 {
-    margin-right: 0;
-  }
-}
-
-/* door */
+/* door: post request on click */
 div.door {
-  background-color: $orange;
   width: 140px;
   height: 250px;
-  position: absolute;
   margin-top: 100px;
+  background-color: $orange;
+
+  position: absolute;
   cursor: pointer;
 }
 
@@ -265,123 +251,15 @@ div.door {
 }
 
 div.door-handle {
+  width: 35px;
+  height: 5px;
+  margin-left: 5px;
   background-color: $brown;
-  width: 50px;
-  height: 10px;
 }
 
 @media (max-width: 400px), (max-height: 450px) {
   div.door-handle {
     width: 25px;
-  }
-}
-
-/* mailbox (fixed to the wall & falling)*/
-.mailbox {
-  width: 100px;
-  height: 90px;
-
-  background-color: $darkgrey;
-  position: relative;
-  cursor: pointer;
-}
-
-.mailboxWall {
-  top: 30px;
-  left: 170px;
-}
-
-@media (max-width: 800px), (max-height: 700px) {
-  .mailbox {
-    width: 95px;
-    height: 60px;
-  }
-
-  .mailboxWall {
-    top: 0px;
-    left: 95px;
-    margin-top: 10px;
-  }
-}
-
-@media (max-width: 400px), (max-height: 450px) {
-  .mailbox {
-    width: 65px;
-    height: 45px;
-  }
-
-  .mailboxWall {
-    top: 0px;
-    left: 70px;
-    margin-top: 10px;
-  }
-}
-
-.mailboxFall {
-  top: 80px;
-  left: 190px;
-}
-
-@media (max-width: 800px), (max-height: 700px) {
-  .mailboxFall {
-    top: 60px;
-    left: 100px;
-    margin-top: 10px;
-  }
-}
-
-@media (max-width: 400px), (max-height: 450px) {
-  .mailboxFall {
-    top: 30px;
-    left: 70px;
-  }
-}
-
-span.mailbox-title {
-  @include writing($grey-black);
-}
-
-div.mailbox-opening {
-  background-color: $grey-black;
-  width: 80%;
-  height: 10px;
-  left: 160px;
-  margin-top: 10px;
-}
-
-/* bakery cookie sign */
-div.sign {
-  background-color: $green;
-  width: 250px;
-  height: 80px;
-  z-index: 1;
-  margin-top: -50px;
-}
-
-@media (max-width: 800px), (max-height: 700px) {
-  div.sign {
-    width: 200px;
-    height: 60px;
-    margin-top: -30px;
-  }
-}
-
-@media (max-width: 400px), (max-height: 450px) {
-  div.sign {
-    width: 150px;
-    height: 50px;
-    margin-top: -40px;
-  }
-}
-
-span.sign-writing {
-  font-size: 1.5rem;
-  @include writing($darkgreen);
-}
-
-@media (max-width: 800px), (max-height: 700px) {
-  span.sign-writing {
-    font-size: 1rem;
   }
 }
 
@@ -409,6 +287,102 @@ span.red {
   color: $red;
 }
 
-span.close {
+/* mailbox: falls on click */
+.mailbox {
+  width: 100px;
+  height: 90px;
+  left: 170px;
+  background-color: $darkgrey;
+
+  position: relative;
   cursor: pointer;
+}
+
+.mailboxWall {
+  top: 30px;
+}
+
+@media (max-width: 800px), (max-height: 700px) {
+  .mailbox {
+    width: 95px;
+    height: 60px;
+    left: 95px;
+    margin-top: 10px;
+  }
+
+  .mailboxWall {
+    top: 0px;
+  }
+}
+
+@media (max-width: 400px), (max-height: 450px) {
+  .mailbox {
+    width: 65px;
+    height: 45px;
+    left: 70px;
+  }
+}
+
+.mailboxFall {
+  top: 80px;
+}
+
+@media (max-width: 800px), (max-height: 700px) {
+  .mailboxFall {
+    top: 60px;
+  }
+}
+
+@media (max-width: 400px), (max-height: 450px) {
+  .mailboxFall {
+    top: 30px;
+  }
+}
+
+span.mailbox-title {
+  @include sign-writing($grey-black);
+}
+
+div.mailbox-opening {
+  width: 80%;
+  height: 10px;
+  left: 160px;
+  margin-top: 10px;
+  background-color: $grey-black;
+}
+
+/* bakery cookie sign */
+div.sign {
+  width: 250px;
+  height: 80px;
+  margin-top: -50px;
+  background-color: $green;
+  z-index: 1;
+}
+
+@media (max-width: 800px), (max-height: 700px) {
+  div.sign {
+    width: 200px;
+    height: 60px;
+    margin-top: -30px;
+  }
+}
+
+@media (max-width: 400px), (max-height: 450px) {
+  div.sign {
+    width: 150px;
+    height: 50px;
+    margin-top: -40px;
+  }
+}
+
+span.sign-writing {
+  font-size: 1.5rem;
+  @include sign-writing($darkgreen);
+}
+
+@media (max-width: 800px), (max-height: 700px) {
+  span.sign-writing {
+    font-size: 1rem;
+  }
 }

@@ -6,8 +6,6 @@ const bodyParser = require("body-parser");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const ENV = process.env.NODE_ENV;
-
 //middleware
 app.use(cors());
 app.use(express.json());
@@ -32,6 +30,7 @@ app.post("/order", async (req, res) => {
     return res.json(newOrder.rows);
   } catch (error) {
     console.log(error.message);
+    return res.json({ error: error.message });
   }
 });
 

@@ -7,8 +7,8 @@ function Bakery(props) {
   const [w1hovered, setW1Hovered] = useState(false);
   const [w2hovered, setW2Hovered] = useState(false);
   const [orderConfirmation, setOrderConfirmation] = useState(false);
-  const [orderError, setOrderError] = useState(false);
   const [orderId, setOrderId] = useState("");
+  const [orderError, setOrderError] = useState(false);
   const [nightMode, setNightMode] = useState(false);
   const [mailboxFall, setMailboxFall] = useState(false);
 
@@ -26,7 +26,6 @@ function Bakery(props) {
     if (!props.sunToggle) {
       return;
     }
-
     setW1Hovered(false);
   };
 
@@ -34,7 +33,6 @@ function Bakery(props) {
     if (!props.sunToggle) {
       return;
     }
-
     setW2Hovered(true);
   };
 
@@ -42,13 +40,12 @@ function Bakery(props) {
     if (!props.sunToggle) {
       return;
     }
-
     setW2Hovered(false);
   };
 
   const makeOrder = () => {
     console.log(props.sunToggle);
-    if (props.sunToggle === false) {
+    if (!props.sunToggle) {
       return;
     }
 
@@ -74,28 +71,28 @@ function Bakery(props) {
     <Container fluid>
       {orderConfirmation && (
         <Alert color="success">
-          SUCCESS: Your order has been placed! <br />
-          Your order id is:&nbsp;<span className="red">{orderId}</span>
+          SUCCESS: your order id is:&nbsp;
+          <span className="red">{orderId}</span>
           <div className="d-flex justify-content-end">
-            <span className="close" onClick={() => setOrderConfirmation(false)}>
+            <Button color="success" onClick={() => setOrderConfirmation(false)}>
               X
-            </span>
+            </Button>
           </div>
         </Alert>
       )}
 
       {orderError && (
         <Alert color="danger">
-          ERROR: Your order has NOT been placed! please try again later
+          ERROR: please try again later!
           <div className="d-flex justify-content-end">
-            <span className="close" onClick={() => setOrderError(false)}>
+            <Button color="danger" onClick={() => setOrderError(false)}>
               X
-            </span>
+            </Button>
           </div>
         </Alert>
       )}
 
-      <Row className="bakery-drawing d-flex flex-column align-items-center">
+      <Row className="d-flex flex-column align-items-center">
         <div
           className={props.sunToggle ? "planet sun" : "planet moon"}
           onClick={nightModeToggle}
@@ -103,7 +100,7 @@ function Bakery(props) {
         ></div>
         <div className="roof"></div>
 
-        <div className="body d-flex flex-column align-items-center">
+        <div className="house-body d-flex flex-column align-items-center">
           <div className="sign d-flex justify-content-center align-items-center">
             <span className="sign-writing"> COOKIE BAKERY </span>
           </div>

@@ -75,13 +75,13 @@ it("mailbox falls to the ground on click", () => {
 
   //before click -> on the wall
   expect(getByTestId("mailbox")).toHaveClass(
-    "mailbox d-flex flex-column align-items-center"
+    "mailbox mailboxWall d-flex flex-column align-items-center"
   );
 
   fireEvent.click(getByTestId("mailbox"));
 
   //after click -> on the ground
   expect(getByTestId("mailbox")).toHaveClass(
-    "mailboxFall d-flex flex-column align-items-center"
+    "mailbox mailboxFall d-flex flex-column align-items-center"
   );
 });

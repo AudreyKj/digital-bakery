@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
 import Bakery from "./Bakery.js";
 import "./App.scss";
 
@@ -15,6 +14,7 @@ function App() {
 
     night ? setNight(false) : setNight(true);
   };
+
   return (
     <div
       className={
