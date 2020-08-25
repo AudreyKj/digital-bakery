@@ -106,13 +106,21 @@ function Bakery(props) {
           </div>
           <div className="windows d-flex justify-content-between">
             <div
-              className={w1hovered ? "cookie cookie1" : "window window1"}
+              className={
+                w1hovered
+                  ? "w-element cookie cookie1"
+                  : "w-element window window1"
+              }
               onMouseEnter={w1transformToCookie}
               onMouseLeave={w1transformBacktoWindow}
               data-testid="window1"
             ></div>
             <div
-              className={w2hovered ? "cookie cookie2" : "window window2"}
+              className={
+                w2hovered
+                  ? "w-element cookie cookie2"
+                  : "w-element window window2"
+              }
               onMouseEnter={w2transformToCookie}
               onMouseLeave={w2transformBacktoWindow}
               data-testid="window2"

@@ -18,20 +18,20 @@ afterEach(cleanup);
 it("if nighMode is off, the windows transform to a cookie on hover", () => {
   const { container, getByTestId } = render(<Bakery sunToggle={true} />);
 
-  expect(getByTestId("window1")).toHaveClass("window window1");
-  expect(getByTestId("window2")).toHaveClass("window window2");
+  expect(getByTestId("window1")).toHaveClass("w-element window window1");
+  expect(getByTestId("window2")).toHaveClass("w-element window window2");
 
   //mouseEnter: window to cookie
   fireEvent.mouseEnter(getByTestId("window1"));
-  expect(getByTestId("window1")).toHaveClass("cookie cookie1");
+  expect(getByTestId("window1")).toHaveClass("w-element cookie cookie1");
   fireEvent.mouseEnter(getByTestId("window2"));
-  expect(getByTestId("window2")).toHaveClass("cookie cookie2");
+  expect(getByTestId("window2")).toHaveClass("w-element cookie cookie2");
 
   //mouseLeave: cookie to window
   fireEvent.mouseLeave(getByTestId("window1"));
-  expect(getByTestId("window1")).toHaveClass("window window1");
+  expect(getByTestId("window1")).toHaveClass("w-element window window1");
   fireEvent.mouseLeave(getByTestId("window2"));
-  expect(getByTestId("window2")).toHaveClass("window window2");
+  expect(getByTestId("window2")).toHaveClass("w-element window window2");
 });
 
 it("if nighMode is off, triggers POST request when user clicks on the door", async () => {

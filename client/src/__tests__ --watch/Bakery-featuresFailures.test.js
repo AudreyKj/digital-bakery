@@ -31,14 +31,14 @@ it("if nighMode is on, do not triggers POST request when user clicks on the door
 it("if nightMode is on, the windows do not transform to cookies on hover", () => {
   const { container, getByTestId } = render(<Bakery sunToggle={false} />);
 
-  expect(getByTestId("window1")).toHaveClass("window window1");
-  expect(getByTestId("window2")).toHaveClass("window window2");
+  expect(getByTestId("window1")).toHaveClass("w-element window window1");
+  expect(getByTestId("window2")).toHaveClass("w-element window window2");
 
   fireEvent.mouseEnter(getByTestId("window1"));
   fireEvent.mouseEnter(getByTestId("window2"));
 
-  expect(getByTestId("window1")).toHaveClass("window window1");
-  expect(getByTestId("window2")).toHaveClass("window window2");
+  expect(getByTestId("window1")).toHaveClass("w-element window window1");
+  expect(getByTestId("window2")).toHaveClass("w-element window window2");
 });
 
 it("displays error message if POST request fails", async () => {

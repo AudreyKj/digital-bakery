@@ -10,10 +10,8 @@ $orange: #f3b23c;
 $brown: #a96501;
 $green: #92c57a;
 $darkgreen: #2e3e26;
-$daySky1: #cfd9df;
-$daySky2: #4f8aab;
-$nightSky1: #1e323e;
-$nightSky2: #004771;
+$daySky: #4f8aab;
+$nightSky: #004771;
 
 @mixin sky($color1, $color2) {
   background: linear-gradient(0deg, $color1 0, $color2);
@@ -54,14 +52,19 @@ html,
 .App {
   width: 100%;
   min-height: 100vh;
+
+  -webkit-transition: background-color 1s ease-out;
+  -moz-transition: background-color 1s ease-out;
+  -o-transition: background-color 1s ease-out;
+  transition: background-color 1s ease-out;
 }
 
 .day {
-  @include sky($daySky1, $daySky2);
+  background: $daySky;
 }
 
 .night {
-  @include sky($nightSky1, $nightSky2);
+  background: $nightSky;
 }
 
 /* === BAKERY COMPONENT  === */
@@ -88,6 +91,10 @@ html,
   right: -120px;
   top: 40px;
 
+  -webkit-transition: background-color 1s ease-out;
+  -moz-transition: background-color 1s ease-out;
+  -o-transition: background-color 1s ease-out;
+  transition: background-color 1s ease-out;
   cursor: pointer;
 }
 
@@ -159,6 +166,13 @@ div.house-body {
 /* windows: transform to cookie img on click */
 div.windows {
   width: 100%;
+}
+
+.w-element {
+  -webkit-transition: 0.2s 0s all linear;
+  -moz-transition: 0.2s 0s all linear;
+  -o-transition: 0.2s 0s all linear;
+  transition: 0.2s 0s all linear;
 }
 
 .window {
@@ -295,6 +309,10 @@ span.red {
   background-color: $darkgrey;
 
   position: relative;
+  -webkit-transition: 0.3s 0s all linear;
+  -moz-transition: 0.3s 0s all linear;
+  -o-transition: 0.3s 0s all linear;
+  transition: 0.3s 0s all linear;
   cursor: pointer;
 }
 
