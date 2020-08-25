@@ -1,68 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Interactive Bakery House with React
 
-## Available Scripts
+Full Stack React web application displaying a bakery house with interactive features.
+<br/>
+CLIENT
+React app made with Create-React-App: the frontend features the bakery house drawing built with HTML/JSX, CSS/SCSS, Bootstrap
+<br/>
+SERVER
+Backend made with NPM, Node.js with Express, using PostgreSQL database
+<br/>
 
-In the project directory, you can run:
+[**visit live app**](https://digital-bakery.herokuapp.com/)
 
-### `yarn start`
+## Implementation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Focus on responsiveness and usability: the UI is fully responsive and cross-browser compatible. The features are animated with CSS and their functionality have been tested.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- I chose PostgreSQL, Node.js with Express for the database because I am not familiar with PHP - even if I am interested in learning it. I think that using PostgreSQL, Node.js with Express is a suitable alternative for the scope of this challenge and they integrate well in a React app.
 
-### `yarn test`
+- I've deployed my implementation with Heroku: [visit live app](https://digital-bakery.herokuapp.com/)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Testing
 
-### `yarn build`
+The components and main features have been all tested with Jest and React Testing Library.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Future improvements
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- add polyfills for older browsers
+- improve accessibility
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
 
-### `yarn eject`
+- on hover the windows transform to a cookie image
+- a click on the door triggers POST request: a success message or error message indicates if the request was successful
+- a click on the sun switches to night mode: transforming the windows and making a POST request are not possible anymore
+- on click the mailbox falls to the ground
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Tech
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Stack**: SASS/SCSS, JavaScript, Node.js with Express, PostgreSQL, React, React Bootstrap,
+React Testing Library, Jest
+**Deployment**: Heroku
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Visual
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![screenshot](readMe/screenshot.png)
