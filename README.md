@@ -1,11 +1,11 @@
 ## Interactive Bakery House with React
 
 Full Stack React web application displaying a bakery house with interactive features.
-<br/>
-CLIENT
+<br/><br/>
+CLIENT<br/>
 React app made with Create-React-App: the frontend features the bakery house drawing built with HTML/JSX, CSS/SCSS, Bootstrap
-<br/>
-SERVER
+<br/><br/>
+SERVER<br/>
 Backend made with NPM, Node.js with Express, using PostgreSQL database
 <br/>
 
@@ -13,11 +13,11 @@ Backend made with NPM, Node.js with Express, using PostgreSQL database
 
 ## Implementation
 
-- Focus on responsiveness and usability: the UI is fully responsive and cross-browser compatible. The features are animated with CSS and their functionality have been tested.
+- Focus on responsiveness and usability: the UI is fully responsive and cross-browser compatible. The features are animated with CSS and their functionality has been tested.
 
 - I chose PostgreSQL, Node.js with Express for the database because I am not familiar with PHP - even if I am interested in learning it. I think that using PostgreSQL, Node.js with Express is a suitable alternative for the scope of this challenge and they integrate well in a React app.
 
-- I've deployed my implementation with Heroku: [visit live app](https://digital-bakery.herokuapp.com/)
+- I've added React-Helmet for SEO metatags and deployed my implementation with Heroku: [visit live app](https://digital-bakery.herokuapp.com/)
 
 ## Testing
 
@@ -38,9 +38,9 @@ The components and main features have been all tested with Jest and React Testin
 ## Tech
 
 **Stack**: SASS/SCSS, JavaScript, Node.js with Express, PostgreSQL, React, React Bootstrap,
-React Testing Library, Jest
+React Testing Library, Jest <br/>
 **Deployment**: Heroku
 
 ## Visual
 
-![screenshot](readMe/screenshot.png)
+![screenshot](screenshot.png)
