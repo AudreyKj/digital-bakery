@@ -12,8 +12,7 @@ function Bakery(props) {
   const [nightMode, setNightMode] = useState(false);
   const [mailboxFall, setMailboxFall] = useState(false);
 
-  console.log("props", props);
-
+  //windows to cookies toggle
   const w1transformToCookie = () => {
     if (!props.sunToggle) {
       return;
@@ -43,8 +42,8 @@ function Bakery(props) {
     setW2Hovered(false);
   };
 
+  //POST request on door click
   const makeOrder = () => {
-    console.log(props.sunToggle);
     if (!props.sunToggle) {
       return;
     }
@@ -52,17 +51,15 @@ function Bakery(props) {
     axios
       .post("/order")
       .then(res => {
-        console.log(res.data);
-        // console.log(res.data[0].order_id);
         setOrderId(res.data[0].order_id);
         setOrderConfirmation(true);
       })
       .catch(error => {
-        console.log(error);
         setOrderError(true);
       });
   };
 
+  //nightmode toggle
   const nightModeToggle = () => {
     props.nightMode();
   };
@@ -71,7 +68,7 @@ function Bakery(props) {
     <Container fluid>
       {orderConfirmation && (
         <Alert color="success">
-          SUCCESS: your order id is:&nbsp;
+          SUCCESS: your order id is&nbsp;
           <span className="red">{orderId}</span>
           <div className="d-flex justify-content-end">
             <Button color="success" onClick={() => setOrderConfirmation(false)}>

@@ -7,8 +7,6 @@ function App() {
   const [night, setNight] = useState(false);
   const [sun, setSun] = useState(true);
 
-  console.log("night", night);
-
   const nightModeOn = () => {
     night ? setSun(true) : setSun(false);
 
